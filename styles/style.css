@@ -1,0 +1,764 @@
+/* для анимации-вращение квадрата в блоке header */
+@keyframes header__square-pic_animation_rotate {
+    0% {
+        transform: rotate(-15deg);
+    }
+    100% {
+        transform: rotate(345deg);
+    }
+}
+/* для анимации - вращения треугольника в блоке kaufman */
+@keyframes kaufman__triangle_animation_rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.page {
+    min-width: 1100px;
+    /* мы ещё не умеем делать мобильную версию сайта, */
+    /* поэтому выше установлена минимальная ширина страницы */
+    max-width: 1600px;
+    /* выше установили ограничение по максимальной ширине */
+    margin: 0 auto;
+    /* выше для экранов больше 1600px отцентрировали весь контент */
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    /* border: 2px solid #BFBFBF; */
+}
+
+/* увеличение прозрачности всех ссылок на странице при наведении на них курсора */
+.page a {
+    transition: opacity 0.7s linear;
+/* transition указываем в состоянии без фокуса для обратного плавного перехода */
+}
+.page a:hover  {
+    opacity: 0.55;
+}
+
+
+
+
+/* начало первого блока - header */
+.header {
+    height: 100vh;
+    min-height: 600px;
+    max-height: 756px;
+    /* выше установили ограничения для секции */
+    background-color: #F2F2F2; /*серый фон для блока header*/
+    display: flex; /*сделаем блок флек-контейнером для всех элементов */
+    position: relative;
+    margin-bottom: 100px;
+     /*выше для позиционирования внутренних дочерних элементов внутри блока */
+    overflow: hidden;
+    /* выше после поворота синего квадрата он выходил за границы блока */
+}
+.logo {
+    position: absolute; /*абсолютное позиционирование относительно блока header*/
+    z-index: 1; /*поверх всех элементов в блоке header*/
+}
+/* первый элемент первого блока - логотип Яндекс-практикум */
+.logo_place_header {
+    width: 183px;
+    height: 32px;
+    left: 64px;
+    top: 30px;
+    /* выше позиция логотипа относительно блока header*/
+}
+/* второй элемент первого блока - главный заголовок */
+.header__title {
+    width: 730px;
+    margin-left: 64px; 
+    line-height: 96px; /*отступ по горизонтали*/
+    font-size: 102px;
+    align-self: center; /*выравниваем по центру контейнера по вертикали*/
+    font-weight: bold;
+}
+/* третий элемент первого блока - вопрос со ссылкой */
+.header__subtitle {
+    width: 388px;
+    position: absolute; /*абсолютное позиционирование относительно блока header*/
+    left: 64px;  /*выравниваем блок относительно родителя от левого края*/
+    bottom: 30px;   /*от нижнего края*/
+    z-index: 1;   /* поверх всех окон*/
+    line-height: 25px;
+    font-size: 18px;
+    font-weight: normal;
+    margin: 0px;
+}
+/* четвертый элемент первого блока - ссылка внутри абзаца синего цвета */
+.header__link {
+    color: #2F80ED;
+    text-decoration: none;
+}
+/* пятый элемент первого блока с главным изображием */
+.header__main-illustration {
+    width: 765px;
+    height: 608px;
+    position: absolute; /*абсолютное позиционирование относительно блока header*/
+    bottom: 0px; /*позиция элемента относительно блока header*/
+    right: 0px;
+    background-size: cover;
+    background-position: center;
+    background-image: url(../images/two_again.png);   
+}
+/*шестой элемент первого блока - фон, частично перекрывающий
+главное изображение*/
+.header__square-pic {
+    height: 568px;
+    width: 568px;
+    position: absolute; /*абсолютное позиционирование относительно блока header*/
+    top: 64px;  /*позиция элемента относительно блока header*/
+    right: 0px;
+    background-color: #2F80ED;
+    /* повернем синий квадрат */
+    transform: rotate(-15deg);
+    /* анимация - поворот квадрата */
+    animation: header__square-pic_animation_rotate 20s linear infinite; 
+}
+
+
+
+
+
+/*начало первого блока основного контента - таблица с описанием*/
+/*сам блок является флекс-контейнером для таблицы*/
+.description {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 100px;
+}
+/* флекс-контейнер-таблица из двух столбцов*/
+.two-columns {
+    width: 80%;
+    justify-content: space-between;
+    display: flex;
+}
+/* первый столбец таблицы */
+.two-columns__brief {
+    color: #2F80Ed;
+    width: 175px;
+    font-size: 18px;
+    line-height: 1.2em;
+    margin: 0px;
+}
+/* второй столбец таблицы - флекс-контейнер для трех параграфов */
+.two-columns__main-text {
+      flex-direction: column;
+      display: flex;
+      width: 80%;
+      min-width: 784px; 
+   
+}
+/* 3 параграфа */
+.two-columns__paragraph {
+    line-height: 34px;
+    font-size: 24px;
+    margin: 0px;
+}
+/* нижний отступ для всех параграфов кроме последнего */
+.two-columns__paragraph:not(:last-child) {
+    margin-bottom: 30px;
+}
+/* для акцента на вывод */
+.two-columns__span-accent {
+    font-size: 24px;
+    line-height: 34px;
+    font-weight: bold; 
+}
+
+
+
+
+/* начало второго блока основного контента - секции technics */
+.technics {
+    /* выравниваем всю секцию по центру */
+    margin: 100px auto 0px; 
+}
+/* первый блок-заголовок - выравниваем по центру*/
+.section-title {
+    width: 60%;
+    margin: 0px auto;
+    text-align: center;
+    line-height: 1.15em;
+    font-size: 60px;
+    font-weight: bold;
+}
+/* модификатор не применяется, т.к. у всех заголовков на странице единый стиль оформления и
+модификатор не требуется */
+/* второй блок - подзаголовок - выравниваем по центру */
+.section-subtitle {
+    text-align: center;
+    width: 60%;
+    margin: 20px auto 0px;
+    line-height: 34px;
+    font-size: 24px;
+    font-weight: normal;
+}
+/* модификатор не применяется, т.к. у всех подзаголовков на странице единый стиль оформления и
+модификатор не требуется */
+/* третий блок - флекс-контейнер для карточек */
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    /* выше контейнер состоит из двух строк флекс-элементов с переносом элементов 
+    на следующую строку */
+}
+.cards_technics {
+    margin: 0px auto 0px;
+    width: 68.3%;
+    /* выше в брифе указана ширина 80% - при этом значении расстояние между карточками получается больше 100px,
+    поэтому подбирал значение ширины исходя из расстояния между карточками 100px. */
+}
+/* ячейка флекс элемент и одновременно флекс-контейнер для трех элементов */
+.cards__item {
+    display: flex;
+    flex-direction: column;
+    margin-top: 60px;
+    padding: 0px;
+    width: 240px;
+    box-sizing: border-box;
+}
+/* ниже боковые отступы для средних карточек - с номерами 2,5 и т.д. */
+.cards__item:nth-child(3n+2) {
+    margin: 60px 100px 0px;
+}
+/* первый элемент в карточке - изображение */
+.cards__image {
+    padding: 0px;
+    margin: 0px 40px 43px;
+    width: 160px;
+    height: 160px;
+    padding: 0px;
+    border-radius: 50%;
+}
+/* второй элемент в карточке - заголовок */
+.cards__title {
+    text-align: center;
+    line-height: 1.15em;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0px 0px 16px;
+}
+/* третий элемент в карточке - описание */
+.cards__description {
+    text-align: center;
+    line-height: 23px;
+    font-size: 18px;
+    font-weight: normal;
+    margin: 0px;
+    padding: 0px 3px;
+}
+
+
+
+
+/* начало третьего блока основного контента - секции video */
+.video {
+    padding-top: 50px;
+    /* расстояние между секциями technics и video должно быть 100px - 
+    складывается  из padding-top: 50px и сдвига сверху top: 50px при относительном позиционировании.  */
+    position: relative;
+    top: 50px;
+    z-index: 2;
+}
+/* ЗАКОММЕНТИРОВАННЫЕ СВОЙСТВА ОПИСАНЫ В СЕКЦИИ TECHNICS */
+/* первый блок - заголовок */
+/* модификатор не применяется, т.к. у всех заголовков на странице единый стиль оформления и
+модификатор не требуется */
+/* .section-title {
+    width: 60%;
+    margin: 0px auto;
+    text-align: center;
+    line-height: 1.15em;
+    font-size: 60px;
+    font-weight: bold;
+} */
+/* модификатор не применяется, т.к. у всех заголовков на странице единый стиль оформления и
+модификатор не требуется */
+/* второй блок - подзаголовок - выравниваем по центру */
+/* .section-subtitle {
+    text-align: center;
+    width: 60%;
+    margin: 20px auto 0px;
+    line-height: 34px;
+    font-size: 24px;
+    font-weight: normal;
+} */
+
+/* третий блок - флекс-контейнер для двух элементов с видео */
+.video__iframes {
+    display: flex;
+    margin-top: 50px;
+    justify-content: center;
+} 
+/* псевдокласс для задания правого margin только первому элементу */
+.video__iframe:first-child {
+    margin-right: 20px;
+}
+/* флекс-элементы - контейнеры с видео */
+.video__iframe {
+    width: 515px;
+    height: 316px;
+}
+
+
+
+
+
+
+/*начало четвертого блока основного контента - таблицы с описанием*/
+/*сам блок является флекс-контейнером для таблицы*/
+.oakley {
+    display: flex;
+    justify-content: center;
+    padding: 160px 0px 80px;
+    background-color: #F2F2F2; /*серый фон для блока Oakley*/
+}
+/* ЗАКОММЕНТИРОВАННЫЕ СВОЙСТВА ПРОПИСАНЫ В СЕКЦИИ DESCRIPTION */
+/* флекс-контейнер-таблица из двух столбцов*/
+/* .two-columns {
+    width: 80%;
+    justify-content: space-between;
+    display: flex;
+} */
+/* второй столбец таблицы - флекс-контейнер для трех параграфов */
+/* .two-columns__main-text {
+    flex-direction: column;
+    display: flex;
+    width: 80%;
+    min-width: 784px; 
+ 
+} */
+ /* 3 параграфа  */
+/* .two-columns__paragraph {
+  line-height: 34px;
+  font-size: 24px;
+  margin: 0px;
+} */
+ /* нижний отступ для всех параграфов кроме последнего  */
+/* .two-columns__paragraph:not(:last-child) {
+  margin-bottom: 30px;
+} */
+ /* для акцента на вывод  */
+/* .two-columns__span-accent {
+  font-size: 24px;
+  line-height: 34px;
+  font-weight: bold; 
+} */
+
+
+
+
+
+
+
+/* начало пятого блока основного контента - Фейнман */
+.feinman {
+    background-color: #F2F2F2; /*серый фон для блока Feinman*/
+    /* фоновое изображение Фейнман в левом нижнем углу */
+    background-image: url(../images/feinman.png);
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    background-size: 867px 637px;
+    margin: 0px auto; /*выравниваем по центру*/
+    padding-top: 100px;
+    height: 790px;
+    /* отступ сверху и снизу и центруем по горизонтали */
+    position: relative; 
+    /* выше для позиционирования ссылки относительно блока Фейнмам */
+    text-align: center;
+    /* выше для позиционирования заголовка и подзаголовка по центру блока */
+}
+/* ниже стиль первого блока-заголовка */
+.feinman__title {
+    font-size: 120px;
+    line-height: 1.15em;
+    font-weight: bold;
+    margin: 0px auto 0px;
+    width: 648px;
+}
+/* ниже стиль второго блока-подзаголовка */
+.feinman__subtitle {
+    font-size: 36px;
+    line-height: 51px;
+    font-weight: normal;
+    display: inline-block;
+    /* выше установим размер заголовка по величине контента */
+    margin-top: 70px;
+}
+/* стиль и позиционирование ссылки-абсолютное относительно 
+родителя-блока Фейнман */
+.feinman__link {
+    position: absolute;
+    top: 50%;
+    right: 48px;
+    text-decoration: none;
+    font-size: 36px;
+    line-height: 51px;
+    font-weight: normal;
+    color: black;
+}
+
+
+
+
+
+
+/* начало шестого блока основного контента - секции digits */
+.digits {
+    /* выравниваем всю секцию по центру */
+    margin: 100px auto; 
+}
+/* ЗАКОММЕНТИРОВАННЫЕ СВОЙСТВА ОПИСАНЫ В СЕКЦИИ TECHNICS */
+/* первый блок-заголовок - выравниваем по центру*/
+/* .section-title {
+    width: 60%;
+    margin: 0px auto;
+    text-align: center;
+} */
+/* второй блок - подзаголовок - выравниваем по центру */
+/* .section-subtitle {
+    text-align: center;
+    width: 60%;
+    margin: 20px auto 0px;
+} */
+/* описание модификатора первого блока белой темы в */
+.section-title_theme-white{
+    line-height: 69px;
+    font-size: 60px;
+    font-weight: bold;
+}
+
+/* описание модификатора второго блока белой темы в */
+.section-subtitle_theme-white {
+    line-height: 34px;
+    font-size: 24px;
+    font-weight: normal;
+}
+/* третий блок - таблица-флекс-контейнер */
+.table {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;  
+    /* выше контейнер состоит из двух строк флекс-элементов с переносом элементов 
+    на следующую строку */
+}
+.table_theme-white {
+    margin: 0px auto;
+    width: 1100px;
+}
+/* ячейка флекс элемент в белой теме */
+.table__cell_theme-white {
+    width: 250px;
+    padding: 0px;
+    margin: 60px 0px 0px;
+}
+/* модификатор для заголовка в белой теме */
+.table__heading_theme-white {
+    line-height: 1.15em;
+    font-size: 24px;
+    font-weight: bold;
+    margin:0px;
+}
+/* модификатор для текста в белой теме */
+.table__text_theme-white {
+    line-height: 1.2em;
+    font-size: 18px;
+    font-weight: normal;
+    margin:20px 0px 0px;
+}
+
+
+
+
+
+
+/* начало седьмого блока основного контента - секции khan */
+.khan {
+    padding-top: 105px;
+    background-color: #F2F2F2; /*серый фон для блока khan*/
+}
+/* первый блок - общий контейнер для всех элементов */
+.khan__container {
+    width: 80%;
+    margin: 0px auto;
+}
+/* второй блок - автор - без отступов сверху и снизу */
+.khan__author {
+    line-height: 42px;
+    font-size: 30px;
+    font-weight: normal;
+    margin: 0px;
+    display: inline-block;
+}
+/* третий блок - заголовок */
+.khan__title {
+    line-height: 1.15em;
+    font-size: 60px;
+    font-weight: bold;
+    margin:0px 0px 50px;
+}
+/* четвертый элемент - цитата */
+.khan__quote {
+    width: 790px;
+    line-height: 34px;
+    font-size: 24px;
+    font-weight: normal;
+    margin: 0px 0px 36px;
+}
+/* пятый элемент - автор цитаты */
+.khan__quote-author {
+    line-height: 1.15em;
+    font-size: 24px;
+    font-weight: bold;
+    font-style: normal;
+}
+/* шестой элемент - описание автора цитаты */
+.khan__quote-author-subline {
+    font-weight: normal;
+    /* ниже сделаем элемент блочным для переноса на следующую строку без тега <br> */
+    display: block;
+    margin: 10px 0px 68px;
+}
+
+/* седьмой элемент - флекс-контейнер для изображения книги и ссылки на нее */
+.khan__book-container {
+    display: flex;
+    align-items: flex-start;
+}
+/* восьмой элемет - изображение с книгой */
+.khan__book-pic {
+    width: 620px;
+    height: 608px;
+    object-fit: none;
+    object-position: top left;
+}
+/* девятый элемент ссылка на покупку книги */
+.khan__buy-link {
+    margin-left: 20px;
+    line-height: 42px;
+    font-size: 30px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #2F80ED;
+}
+
+
+
+
+
+/* начало восьмого блока основного контента - секции Кауфман 
+таблицы с темным фоном */
+.kaufman {
+    /* выравниваем всю секцию по центру */
+    margin: 0px auto; 
+    background-color: #1F1F1F;
+    padding: 90px 0px;
+    position: relative; 
+    overflow: hidden;
+    /* выше для позиционирования элемента kaufman-triangle -изображения с 
+    треугольником относительно секции Кауфман */
+}
+/* ЗАКОММЕНТИРОВАННЫЕ СВОЙСТВА ОПИСАНЫ В СЕКЦИИ TECHNICS */
+/* первый блок-заголовок - выравниваем по центру*/
+/* .section-title {
+    width: 60%;
+    margin: 0px auto;
+    text-align: center;
+} */
+/* второй блок - подзаголовок - выравниваем по центру */
+/* .section-subtitle {
+    text-align: center;
+    width: 60%;
+    margin: 20px auto 0px;
+} */
+/* описание модификатора первого блока темной темы в */
+.section-title_theme-dark{
+    line-height: 69px;
+    font-size: 60px;
+    font-weight: bold;
+    color: #fff;
+}
+/* описание модификатора второго блока - подзаголовка темной темы в */
+.section-subtitle_theme-dark {
+    line-height: 34px;
+    font-size: 24px;
+    font-weight: normal;
+    color: #fff;
+}
+/* ЗАКОММЕНТИРВАННЫЕ СВОЙСТВА ОПИСАНЫ В СЕКЦИИ DIGITS */
+/* третий блок - таблица-флекс-контейнер */
+/* .table {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;  
+} */
+.table_theme-dark {
+    margin: 0px auto;
+    width: 1100px;
+}
+/* ячейка флекс элемент в темной теме */
+.table__cell_theme-dark {
+    width: 200px;
+    padding: 0px;
+    margin: 80px 0px 0px;
+    z-index: 1; /*для того, чтобы текст был поверх изображения*/
+}
+/* модификатор для заголовка в темной теме */
+.table__heading_theme-dark {
+    line-height: 1.15em;
+    font-size: 24px;
+    font-weight: bold;
+    margin:0px;
+    color: #fff;
+}
+/* модификатор для текста белого цвета в темной теме */
+.table__text_theme-dark {
+    line-height: 1.2em;
+    font-size: 18px;
+    font-weight: normal;
+    margin:20px 0px 0px;
+    color: #fff;
+}
+/* элемент - изображение с голубым треугольником позиционируем абсолютно, 
+выравниваем по верху и со смещением на 210px вправо за край родительского 
+элемента */
+.kaufman__triangle {
+    position: absolute;
+    top: 0px;
+    right: -210px;
+    width: 877px;
+    height: 877px;
+    /* анимация - поворот треугольника */
+    animation: kaufman__triangle_animation_rotate 20s infinite;
+}
+
+
+
+
+
+/* начало девятого блока основного контенте - секции resources */
+.resources {
+    margin-top: 100px;
+}
+/* ЗАКОММЕНТИРОВАННЫЕ СВОЙСТВА ОПИСАНЫ В СЕКЦИИ TECHNICS */
+/* первый блок - заголовок */
+/* модификатор не применяется, т.к. у всех заголовков на странице единый стиль оформления и
+модификатор не требуется */
+/* .section-title {
+    width: 60%;
+    margin: 0px auto;
+    text-align: center;
+    line-height: 1.15em;
+    font-size: 60px;
+    font-weight: bold;
+} */
+/* модификатор не применяется, т.к. у всех заголовков на странице единый стиль оформления и
+модификатор не требуется */
+/* второй блок - подзаголовок - выравниваем по центру */
+/* .section-subtitle {
+    text-align: center;
+    width: 60%;
+    margin: 20px auto 0px;
+    line-height: 34px;
+    font-size: 24px;
+    font-weight: normal;
+} */
+/* третий элемент - флекс-контейнер для логотипов */
+.resources__logo-zone {
+    margin: 80px auto 217px;
+    width: 1100px;
+    display: flex;
+}
+/* четвертый элемент - логотип */
+.resources__logo  {
+    width: 270px;
+    height: 38px;
+    text-align: center;
+}
+
+
+
+
+/* начало блока footer c темным фоном */
+.footer {
+    background-color: #1F1F1F;
+    padding: 60px 0px 40px;
+}
+/* флекс-контейнер для всех элементов */
+.footer__columns {
+    min-height: 250px;
+    width: 90%;
+    margin: 0px auto;
+    display: flex;
+    justify-content: space-between;
+}
+/* флекс-контейнер для двух элементов */
+.footer__column {
+    display: flex;
+    flex-direction: column; /*внутри два элемента, расположенные в колонку*/
+}
+/* первый флекс-элемент - с заданной шириной по умолчанию - является
+флекс-контейнером для двух элементов */
+.footer__column_content_copyright {
+    flex-basis: 711px;
+    justify-content: flex-end; 
+    /* выше для позиционирования второго вложенного элемента,  а первый - вырван
+    из потока значением absolute */
+    position: relative; /*для определения позиции логотипа, который распологается
+    внутри*/
+}
+/* размеры и позиция логотипа */
+.logo_place_footer {
+    width: 183px;
+    height: 35px;
+    top: 0px;
+    left: 0px;
+}
+/* второй элемент внутри элемента footer__column_content_copyright */
+.footer__author {
+    font-size: 18px;
+    line-height: 25px;
+    font-weight: normal;
+    margin: 18px 0px;
+    display: inline-block;
+    color: #fff;
+    align-self: flex-start; /* не на всю строку, а в начале*/
+}
+/* первый элемент-заголовок */
+.footer__column-heading {
+    color: #fff;
+    margin: 0px 0px 20px;
+    line-height: 30px;
+    font-size: 18px;
+    font-weight: bold;
+}
+/* второй элемент - блок с тремя ссылками */
+.footer__column-links {
+    margin: 0px;
+    line-height: 30px;
+    font-size: 18px;
+    font-weight: normal;
+}
+/* нижний отступ после блоков со ссылками */
+.footer__column-links:last-child {
+    margin-bottom: 16px;
+}
+/* стиль всех ссылок в блоке footer */
+.footer__column-links a {
+    color: #fff;
+    text-decoration: none;
+}
+/* перенос элементов на следующую строку в блоке footer__column_content_info за счет использования
+элементов блочного типа */
+.footer__column_content_info .footer__column-links a {
+    display: block;
+}
+.footer__social-icons {
+    width: 16px;
+    height: 16px;
+    /* размеры логотипов-ссылок */
+}
